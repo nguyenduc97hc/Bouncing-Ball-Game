@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BouncingBallGame</title>
+</head>
+<body onkeydown="run()">
+<center>
+<canvas id="canvas" width="800" height="600" style="border: 1px solid gray;"></canvas>
+</center>
+<script src="Game.js"></script>
+<script>
+    let ball = new Ball();
+    let bar = new Bar();
+    let score = 0;
+
+    ball.drawBall();
+    function move(){
+        CTX.clearRect(0,0,800,600);
+        ball.drawScore();
+        ball.drawBall();
+        ball.moveBall();
+        bar.drawBar();
+        ball.check(bar);
+        requestAnimationFrame(move);
+    }
+    requestAnimationFrame(move);
+    bar.drawBar();
+</script>
+</body>
+</html>
